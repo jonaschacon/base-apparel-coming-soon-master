@@ -11,7 +11,11 @@
     /* Gradients */
     /* - Linear, 135deg, from hsl(0, 0%, 100%), to hsl(0, 100%, 98%) 
     - Linear, 135deg, from hsl(0, 80%, 86%), to hsl(0, 74%, 74%) */
+    --first: hsl(0, 0%, 100%), hsl(0, 100%, 98%);
+    --second: hsl(0, 80%, 86%), hsl(0, 74%, 74%);
 }
+
+
 
 * {
     padding: 0px;
@@ -28,7 +32,6 @@ body {
     min-height: 100vh;
     font-family: Josefin sans, sans-serif;
     font-size: 1rem;
-    background-image: url(images/bg-pattern-desktop.svg);
 }
 
 p {
@@ -36,6 +39,8 @@ p {
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
     max-width: 400px;
     margin: auto;
 }
@@ -54,7 +59,6 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     padding: 20px;
 }
 
@@ -69,6 +73,7 @@ h1 {
 
 
 .row {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -80,7 +85,7 @@ h1 {
     border: 1px solid hsl(0, 36%, 70%);
 }
 
-#input-box {
+#input {
     border: none;
     background: transparent;
     outline: none;
@@ -102,7 +107,95 @@ button {
     border-radius: 30px;
     font-weight: bold;
     cursor: pointer;
+    transform: translateX(2px);
+}
+
+button:hover {
+    background-image: linear-gradient(135deg, hsl(0, 80%, 91%), hsl(0, 74%, 79%));
+    box-shadow: 4px 4px 8px pink;
+}
+
+.error {
+    border: 1px solid var(--soft-red);
+}
+
+.icon-error {
+    display: none;
+    position: absolute;
+    right: 80px;
+}
+
+.msg-error {
+    display: none;
+    margin-left: 20px;
+    color: var(--soft-red);
+}
+
+.row::after {
+    display: none;
+    position: absolute;
+    content: "Please provide a valid email!";
+    color: red;
+    top: 50px;
+    left: 20px;
+}
+
+.show-error::after {
+    display: block;
+}
+
+@media screen and (min-width: 850px){
+
+    body {
+        padding: 5px;
+    }
+
+    .container {
+        background-color: white;
+        text-align: start;
+        display: grid;
+        grid-template-areas: 
+        "logo hero"
+        "conten hero";
+        max-width: 950px;
+        height: 550px;
+        box-shadow: 2px 2px 15px hsla(0, 0%, 0%, 0.3);
+    }
+
+    .logo {
+        grid-area: logo;
+        padding: 50px 70px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+    }
+
+    .hero {
+        grid-area: hero;
+    }
+
+    .hero img {
+        height: 550px;
+        object-fit: cover;
+    }
+
+    .content {
+        justify-content: start;
+        align-items: start;
+        grid-area: conten;
+        padding: 0px 70px;
+    }
+
+    h1 {
+        max-width: 200px;
+    }
+
+    p {
+        max-width: 400px;
+    }
 }
 
 .attribution { font-size: 1rem; text-align: center; max-width: 400px;}
 .attribution a { color: hsl(228, 45%, 44%); }
+
+
+

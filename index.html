@@ -16,25 +16,33 @@
       <img src="images/logo.svg" alt="">
     </div>
     <div class="hero">
-      <img src="images/hero-mobile.jpg" alt="">
+      <picture>
+        <source media="(min-width: 850px)" srcset="images/hero-desktop.jpg">
+        <img src="images/hero-mobile.jpg" alt="">
+      </picture>
     </div>
     <div class="content">
       <h1><span style="color: hsl(0, 36%, 70%); font-weight: 300;">We're</span> coming soon</h1>
       <p style="color: hsl(0, 36%, 70%);">Hello fellow shoppers! We're currently building our new fashion store. Add your email below to stay up-to-date with announcements and our launch deals.</p>
-      <div class="row">
-        <input type="email" id="input-box" placeholder="Email Adress">
-        <button>
-          <img src="images/icon-arrow.svg" alt="">
-        </button>
-      </div>
+      <form action="">
+        <div class="row" id="row">
+          <input type="text" id="input" placeholder="Email Adress" required>
+          <img class="icon-error" id="icon" src="images/icon-error.svg" alt="">
+          <button type="submit" id="submit" onclick="validate()">
+            <img src="images/icon-arrow.svg" alt="">
+          </button>
+        </div>
+        <p id="p" style="display: none; color: #f96262;"> Please enter a valid email address</p>
+      </form>
     </div>
   </div>
   
   <footer>
     <div class="attribution">
       <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.</p>
-      <p>Coded by <a href="#">Your Name Here</a>.</p>
+      <p>Coded by <a href="https://github.com/jonaschacon" target="_blank">Jonas Chacon</a>.</p>
     </div>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
